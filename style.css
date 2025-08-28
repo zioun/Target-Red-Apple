@@ -1,0 +1,201 @@
+:root {
+  --bg: #0f1226; /* deep navy */
+  --card: #171a33; /* panel */
+  --accent: #7c5cff; /* purple */
+  --accent-2: #00d1b2; /* teal */
+  --text: #e8e9ff; /* light text */
+  --muted: #9aa0c2;
+  --win: #00d664;
+  --lose: #ff5c7c;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,Helvetica,\"Apple Color Emoji\",\"Segoe UI Emoji\";
+  background: radial-gradient(
+    1200px 600px at 70% -10%,
+    #1f2347 0%,
+    #0f1226 40%,
+    #0b0d1d 100%
+  );
+  color: var(--text);
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+.game {
+  width: min(100%, 720px);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.02)
+  );
+  border: 1px solid rgba(124, 92, 255, 0.25);
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 8px 16px 8px;
+}
+.title {
+  font-size: clamp(18px, 3.4vw, 24px);
+  font-weight: 800;
+  letter-spacing: 0.4px;
+}
+.coins {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(124, 92, 255, 0.1);
+  border: 1px solid rgba(124, 92, 255, 0.25);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+.coin-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: gold;
+  border: 2px solid #b89400;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.6) inset;
+}
+
+.reel-wrap {
+  position: relative;
+  background: var(--card);
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.reel {
+  height: min(46vh, 360px);
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: radial-gradient(
+      800px 300px at 50% -40%,
+      rgba(124, 92, 255, 0.15),
+      transparent 60%
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+  outline: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+.reel img {
+  width: min(68%, 300px);
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.35));
+  transition: transform 0.12s ease;
+}
+.spinning .reel img {
+  animation: wobble 0.5s ease-in-out infinite;
+}
+@keyframes wobble {
+  from {
+    transform: translateY(-2px) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(2px) rotate(1deg);
+  }
+  to {
+    transform: translateY(-2px) rotate(-1deg);
+  }
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 8px 4px;
+}
+button {
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  padding: 14px 20px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--accent), #5f3df5);
+  color: white;
+  box-shadow: 0 8px 20px rgba(124, 92, 255, 0.5);
+  transition: transform 0.08s ease, filter 0.2s ease;
+}
+button:active {
+  transform: translateY(1px);
+}
+button.secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: none;
+}
+
+.msg {
+  min-height: 24px;
+  text-align: center;
+  color: var(--muted);
+  font-weight: 600;
+}
+.msg.win {
+  color: var(--win);
+}
+.msg.lose {
+  color: var(--lose);
+}
+
+.goal {
+  font-size: 14px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 6px;
+}
+
+/* Modal */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 12, 24, 0.6);
+  display: none;
+  place-items: center;
+  padding: 20px;
+}
+.overlay.show {
+  display: grid;
+}
+.modal {
+  background: var(--card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 24px;
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+}
+.modal h2 {
+  margin: 0 0 8px 0;
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+  .reel img {
+    width: 78%;
+  }
+  .title {
+    font-size: 18px;
+  }
+}

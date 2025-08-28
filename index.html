@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fruit Stopper — Mini Game</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+    
+  <div class="game" id="game">
+    <div class="header">
+      <div class="title">🍎 Target Red Apple</div>
+      <div class="coins" aria-live="polite" aria-atomic="true">
+        <span class="coin-dot" aria-hidden="true"></span>
+        <span id="coinLabel">Coins:</span>
+        <span id="coins">0</span>
+      </div>
+    </div>
+
+    <div class="reel-wrap spinning" id="reelWrap">
+      <div class="reel" aria-live="polite" aria-atomic="true">
+        <img id="fruitImg" src="" alt="Spinning fruit" />
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="toggleBtn" aria-label="Start or Stop">STOP</button>
+      <button id="resetBtn" class="secondary" aria-label="Reset score">Reset Score</button>
+    </div>
+
+    <div id="message" class="msg">Target: stop on <b>red-apple</b> to earn +10 coins, otherwise −10.</div>
+    <div class="goal">Reach <b>100 coins</b> to win 🎉</div>
+  </div>
+
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="winTitle">
+    <div class="modal">
+      <h2 id="winTitle">🏆 You Win!</h2>
+      <p>You reached 100 coins. Want to play again?</p>
+      <div class="controls" style="padding-top:8px">
+        <button id="playAgain">Play Again</button>
+        <button class="secondary" id="closeModal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./alert.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>

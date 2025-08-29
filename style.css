@@ -62,12 +62,17 @@ body {
   font-weight: 700;
 }
 .coin-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: gold;
-  border: 2px solid #b89400;
-  box-shadow: 0 0 8px rgba(255, 215, 0, 0.6) inset;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: gold;
+    border: 2px solid #b89400;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.6) inset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    color: #1A1D35;
 }
 
 .reel-wrap {
